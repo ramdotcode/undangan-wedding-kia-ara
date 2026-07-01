@@ -1,26 +1,146 @@
 @import "tailwindcss";
 
+/* ============================================
+   ELEVRA — Design tokens
+   Tema: warm gold / cream / dark
+   ============================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-gold: #c9a96e;
+  --color-gold-light: #e8d5a3;
+  --color-gold-dark: #a8883e;
+  --color-cream: #fff8f0;
+  --color-blush: #f5e1da;
+  --color-dark: #2c2420;
+  --color-dark-soft: #4a3f3a;
+
+  /* Cover (blooming garden) */
+  --color-navy: #1e2a4a;
+  --color-navy-soft: #2c3e6b;
+  --color-sky: #dce7f0;
+  --color-sky-deep: #c9d8e6;
+  --color-sakura: #f4c2d7;
+  --color-sakura-deep: #e88aa8;
+  --color-peony: #e8a4b8;
+  --color-hydrangea-blue: #a8c5e0;
+
+  --font-hello-paris: var(--font-hello-paris), "Hello-Paris", serif;
+  --font-clarissa: var(--font-clarissa), "Clarissa", serif;
+  --font-trajanpro: var(--font-trajanpro), "TrajanPro", serif;
+  --font-aston: var(--font-aston-script), "Aston-Script", cursive;
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+
+  --shadow-elevra: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-elevra-sm: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold-dark: var(--color-gold-dark);
+  --color-cream: var(--color-cream);
+  --color-blush: var(--color-blush);
+  --color-dark: var(--color-dark);
+  --color-dark-soft: var(--color-dark-soft);
+  --color-navy: var(--color-navy);
+  --color-navy-soft: var(--color-navy-soft);
+  --color-sky: var(--color-sky);
+  --color-sky-deep: var(--color-sky-deep);
+  --color-sakura: var(--color-sakura);
+  --color-sakura-deep: var(--color-sakura-deep);
+  --color-peony: var(--color-peony);
+  --color-hydrangea-blue: var(--color-hydrangea-blue);
+  --font-script: var(--font-hello-paris);
+  --font-serif: var(--font-clarissa);
+  --font-sans: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-dark-soft);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Reusable utility classes untuk konsistensi tema */
+.font-script {
+  font-family: var(--font-hello-paris);
+  font-weight: 400;
+}
+
+.font-serif-display {
+  font-family: var(--font-clarissa);
+  font-weight: 400;
+}
+
+.font-aston {
+  font-family: var(--font-aston);
+  font-weight: 400;
+}
+
+.text-gold {
+  color: var(--color-gold);
+}
+
+.text-gold-light {
+  color: var(--color-gold-light);
+}
+
+.text-dark {
+  color: var(--color-dark);
+}
+
+.text-dark-soft {
+  color: var(--color-dark-soft);
+}
+
+.text-navy {
+  color: var(--color-navy);
+}
+
+.text-navy-soft {
+  color: var(--color-navy-soft);
+}
+
+.bg-navy {
+  background-color: var(--color-navy);
+}
+
+.bg-navy-soft {
+  background-color: var(--color-navy-soft);
+}
+
+.bg-sky {
+  background-color: var(--color-sky);
+}
+
+.bg-gradient-cover {
+  background: linear-gradient(135deg, #1a1210 0%, #2c2420 100%);
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(180deg, #2c2420 0%, #3d322c 100%);
+}
+
+.bg-gradient-cream {
+  background: linear-gradient(180deg, #fff8f0 0%, #fdf6ee 100%);
+}
+
+/* Default page transition container */
+.section-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding: 6rem 2rem;
+  }
 }
