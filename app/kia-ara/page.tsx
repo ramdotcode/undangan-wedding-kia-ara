@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 
 import Image from "next/image";
 import Cover from "../components/Cover";
@@ -28,6 +29,17 @@ const slideshowImages = [
 ];
 
 export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <HomeInner />
+    </Suspense>
+  );
+}
+
+function HomeInner() {
+  const searchParams = useSearchParams();
+  const guestName = searchParams.get("to")?.trim() || undefined;
+
   const [isLocked, setIsLocked] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -168,6 +180,7 @@ export default function Home() {
               coupleName="Kia & Ara"
               date="Rabu, 08 Juli 2026"
               photoSrc="/Kia-Ervin-080726-7.jpg"
+              guestName={guestName}
               onOpen={handleOpen}
             />
           )}

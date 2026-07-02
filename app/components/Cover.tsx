@@ -214,19 +214,7 @@ export default function Cover({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.1, duration: 0.6 }}
-                className="text-navy-soft mt-4 text-base italic sm:text-lg"
-                style={{ fontFamily: "var(--font-aston)" }}
-              >
-                Kepada Yth.
-              </motion.p>
-            ) : null}
-
-            {guestName ? (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.6 }}
-                className="font-serif-display text-navy text-base sm:text-lg"
+                className="font-serif-display text-navy mt-4 text-base sm:text-lg"
               >
                 {guestName}
               </motion.p>
