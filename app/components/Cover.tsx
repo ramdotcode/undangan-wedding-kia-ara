@@ -18,7 +18,7 @@ interface DragPosition {
 }
 
 /**
- * Halaman cover full-screen dengan background image "BG web.jpeg"
+ * Halaman cover full-screen dengan background image "BG-cover.jpeg"
  * (komposisi sudah berisi pilar, cabang sakura, peony, hydrangea, awan).
  *
  * Tugas komponen ini HANYA:
@@ -69,7 +69,7 @@ export default function Cover({
             ============================================================ */}
         <div className="absolute inset-0">
           <Image
-            src="/BG web.jpeg"
+            src="/BG-cover.jpeg"
             alt="Cover background"
             fill
             priority

@@ -1,99 +1,88 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { supabase } from "../lib/supabase";
 
 interface Wish {
   id: string;
   name: string;
   message: string;
-  attendance: "hadir" | "tidak" | "";
+  attendance: "hadir" | "tidak";
+  created_at: string;
 }
 
-const seedWishes: Wish[] = [
-  {
-    id: "1",
-    name: "Budi & Keluarga",
-    message:
-      "Selamat menempuh hidup baru, semoga menjadi keluarga yang sakinah mawaddah warahmah. Aamiin.",
-    attendance: "hadir",
-  },
-  {
-    id: "2",
-    name: "Sari",
-    message:
-      "Barakallahu lakuma wa baraka 'alaikuma wa jama'a baynakuma fii khair.",
-    attendance: "hadir",
-  },
-  {
-    id: "3",
-    name: "Ahmad & Dewi",
-    message:
-      "Selamat dan sukses untuk pernikahannya, semoga langgeng sampai akhir hayat.",
-    attendance: "hadir",
-  },
-  {
-    id: "4",
-    name: "Rina",
-    message: "Semoga menjadi keluarga yang bahagia dunia akhirat. Aamiin.",
-    attendance: "hadir",
-  },
-  {
-    id: "5",
-    name: "Pak RT",
-    message:
-      "Selamat menempuh hidup baru, semoga diberikan keturunan yang sholeh sholeha.",
-    attendance: "hadir",
-  },
-  {
-    id: "6",
-    name: "Teman Kantor",
-    message:
-      "Barakallah untuk Kia & Ara, semoga menjadi keluarga sakinah.",
-    attendance: "tidak",
-  },
-  {
-    id: "7",
-    name: "Keluarga Besar Ciamis",
-    message:
-      "Turut berbahagia atas pernikahan Kia & Ara. Semoga selalu dalam lindungan Allah SWT.",
-    attendance: "hadir",
-  },
-];
-
 /**
- * Section ucapan / guestbook. Untuk versi produksi, sambungkan ke
- * backend (Supabase / Firebase / API route Next.js). Saat ini pakai
- * local state + seed data.
+ * Section ucapan / guestbook. Data persistent di Supabase (tabel `wishes_kia_ara`).
+ * Env var yang dibutuhkan: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY.
+ * Skema tabel ada di /supabase/schema.sql.
  */
 export default function Wishes() {
-  const [wishes, setWishes] = useState<Wish[]>(seedWishes);
+  const [wishes, setWishes] = useState<Wish[]>([]);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [attendance, setAttendance] = useState<"hadir" | "tidak">("hadir");
   const [submitting, setSubmitting] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent) {
+  // Fetch semua ucapan saat mount, urut terbaru di atas
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      const { data, error: fetchError } = await supabase
+        .from("wishes_kia_ara")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (cancelled) return;
+
+      if (fetchError) {
+        setError(fetchError.message);
+      } else if (data) {
+        setWishes(data as Wish[]);
+      }
+      setLoading(false);
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!name.trim() || !message.trim()) return;
     setSubmitting(true);
+    setError(null);
 
-    // simulasi submit
-    setTimeout(() => {
-      setWishes((prev) => [
-        {
-          id: String(Date.now()),
-          name: name.trim(),
-          message: message.trim(),
-          attendance,
-        },
-        ...prev,
-      ]);
-      setName("");
-      setMessage("");
-      setAttendance("hadir");
+    const { data, error: insertError } = await supabase
+      .from("wishes_kia_ara")
+      .insert({
+        name: name.trim(),
+        message: message.trim(),
+        attendance,
+      })
+      .select()
+      .single();
+
+    if (insertError) {
+      setError(insertError.message);
       setSubmitting(false);
-    }, 400);
+      return;
+    }
+
+    if (data) {
+      // prepend agar muncul di paling atas
+      setWishes((prev) => [data as Wish, ...prev]);
+    }
+    setName("");
+    setMessage("");
+    setAttendance("hadir");
+    setSubmitting(false);
   }
 
   return (
@@ -164,6 +153,10 @@ export default function Wishes() {
           </label>
         </div>
 
+        {error && (
+          <p className="mb-3 text-center text-xs text-red-600">{error}</p>
+        )}
+
         <button
           type="submit"
           disabled={submitting}
@@ -174,49 +167,62 @@ export default function Wishes() {
       </motion.form>
 
       {/* Wishes list */}
-      <div style={{ height: "400px" }} className="overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gold/40 [&::-webkit-scrollbar-track]:bg-transparent">
-        <ul className="space-y-4">
-        {wishes.map((w) => (
-          <motion.li
-            key={w.id}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: Math.random() * 0.3 }}
-            className="rounded-xl border border-[rgba(201,169,110,0.2)] bg-white p-4 shadow-[var(--shadow-elevra-sm)]"
-          >
-            <div className="flex items-start gap-3">
-              <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                <img
-                  src="/1767596045599-1-e1767597019816.png"
-                  alt=""
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="mb-1 flex items-center justify-between gap-2">
-                  <div className="flex min-w-0 items-center gap-2">
-                    <p className="text-gold truncate text-sm font-semibold sm:text-base">
-                      {w.name}
+      <div
+        style={{ height: "400px" }}
+        className="overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gold/40 [&::-webkit-scrollbar-track]:bg-transparent"
+      >
+        {loading ? (
+          <p className="text-navy-soft py-8 text-center text-sm">
+            Memuat ucapan...
+          </p>
+        ) : wishes.length === 0 ? (
+          <p className="text-navy-soft py-8 text-center text-sm">
+            Belum ada ucapan. Jadilah yang pertama!
+          </p>
+        ) : (
+          <ul className="space-y-4">
+            {wishes.map((w) => (
+              <motion.li
+                key={w.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: Math.random() * 0.3 }}
+                className="rounded-xl border border-[rgba(201,169,110,0.2)] bg-white p-4 shadow-[var(--shadow-elevra-sm)]"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full">
+                    <img
+                      src="/1767596045599-1-e1767597019816.png"
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="mb-1 flex items-center justify-between gap-2">
+                      <div className="flex min-w-0 items-center gap-2">
+                        <p className="text-gold truncate text-sm font-semibold sm:text-base">
+                          {w.name}
+                        </p>
+                        <span
+                          className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] uppercase tracking-wider ${
+                            w.attendance === "hadir"
+                              ? "bg-green-100 text-green-700"
+                              : "bg-gray-100 text-gray-500"
+                          }`}
+                        >
+                          {w.attendance === "hadir" ? "Hadir" : "Tidak Hadir"}
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-navy-soft text-sm leading-relaxed">
+                      {w.message}
                     </p>
-                    <span
-                      className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] uppercase tracking-wider ${
-                        w.attendance === "hadir"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-gray-100 text-gray-500"
-                      }`}
-                    >
-                      {w.attendance === "hadir" ? "Hadir" : "Tidak Hadir"}
-                    </span>
                   </div>
                 </div>
-                <p className="text-navy-soft text-sm leading-relaxed">
-                  {w.message}
-                </p>
-              </div>
-            </div>
-          </motion.li>
-        ))}
-      </ul>
+              </motion.li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

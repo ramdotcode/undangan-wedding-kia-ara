@@ -182,7 +182,7 @@ export default function Home() {
           <div className="relative overflow-hidden bg-cream border-b border-[var(--color-gold)]/20">
             <div className="absolute inset-0">
               <Image
-                src="/BG web.jpeg"
+                src="/BG-quote.jpeg"
                 alt="Quote Background"
                 fill
                 priority
@@ -191,7 +191,7 @@ export default function Home() {
               />
             </div>
             {/* Overlay cream tipis agar teks tetap terbaca (sama dengan section 2) */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/15" />
 
             <Section id="quote" bg="transparent" className="relative z-10 text-center">
               <p
@@ -234,7 +234,7 @@ export default function Home() {
             {/* Background image dengan opacity rendah (sama dengan section Quote) */}
             <div className="absolute inset-0">
               <Image
-                src="/BG web.jpeg"
+                src="/BG-quote.jpeg"
                 alt="Opening Background"
                 fill
                 unoptimized
@@ -242,7 +242,7 @@ export default function Home() {
               />
             </div>
             {/* Overlay cream tipis agar teks tetap terbaca */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/15" />
 
             <Section id="opening" bg="transparent" className="relative z-10 text-center">
               <motion.div
@@ -343,25 +343,20 @@ export default function Home() {
           <div className="relative overflow-hidden bg-cream border-b border-[var(--color-gold)]/20">
             <div className="absolute inset-0">
               <Image
-                src="/BG web.jpeg"
+                src="/BG-photo.jpeg"
                 alt="Groom Background"
                 fill
                 unoptimized
-                className="object-cover object-top opacity-30"
+                className="object-cover object-top opacity-50"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/15" />
 
             <Section id="groom" bg="transparent" className="relative z-10 text-center">
-              <p
-                className="text-[var(--color-gold)] mb-2 text-xs font-semibold uppercase tracking-[0.3em]"
-                style={{ fontFamily: "var(--font-trajanpro)" }}
-              >
-                Kedua Mempelai
-              </p>
               <PersonCard
                 role="The Groom"
-                name="Mochamad Rizkia Genggam Perkasa, S. Pd."
+                name="Kia"
+                fullName="Mochamad Rizkia Genggam Perkasa, S. Pd."
                 father={{
                   name: "Bapak Drs. Iskandar",
                   desc: "Purna Eks Dosen Universitas Muhamadiyah Kuningan, Guru SMPN 1 Sindangagung",
@@ -371,7 +366,7 @@ export default function Home() {
                   desc: "Guru SMAN 24 Bandung",
                 }}
                 instagram="https://www.instagram.com/rzkiagp/"
-                photoSrc="/Kia-Ervin-080726-14-rp4cnubhg0k6lexlqyhg69ba4jahmctxaatjulmamc.jpg"
+                photoSrc="/Kia-Ervin-080726-12.jpg"
               />
             </Section>
           </div>
@@ -380,19 +375,20 @@ export default function Home() {
           <div className="relative overflow-hidden bg-cream border-b border-[var(--color-gold)]/20">
             <div className="absolute inset-0">
               <Image
-                src="/BG web.jpeg"
+                src="/BG-photo.jpeg"
                 alt="Bride Background"
                 fill
                 unoptimized
-                className="object-cover object-top opacity-30"
+                className="object-cover object-top opacity-50"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/15" />
 
             <Section id="bride" bg="transparent" className="relative z-10 text-center">
               <PersonCard
                 role="The Bride"
-                name="Ervina Maharani, S. Pd."
+                name="Ara"
+                fullName="Ervina Maharani, S. Pd."
                 father={{
                   name: "H. Dede Sukmara, B.A.",
                   desc: "Purna Eks Kabag Dinas Perhubungan Kabupaten Ciamis",
@@ -402,7 +398,7 @@ export default function Home() {
                   desc: "Purna Guru SDN 1 Margaharja",
                 }}
                 instagram="https://www.instagram.com/ervina_zilla_maharani/"
-                photoSrc="/Kia-Ervin-080726-15-rp4cnv9e2k6c517pfameywrgsll45kd3e0ndmojcic.jpg"
+                photoSrc="/Kia-Ervin-080726-10.jpg"
               />
             </Section>
           </div>
@@ -411,14 +407,14 @@ export default function Home() {
           <div className="relative overflow-hidden bg-cream border-b border-[var(--color-gold)]/20">
             <div className="absolute inset-0">
               <Image
-                src="/BG web.jpeg"
+                src="/BG-quote.jpeg"
                 alt="Countdown Background"
                 fill
                 unoptimized
                 className="object-cover object-top opacity-30"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/15" />
 
             <Section id="countdown" bg="transparent" className="relative z-10 text-center">
               <Countdown
@@ -434,38 +430,54 @@ export default function Home() {
           <div className="relative overflow-hidden bg-cream border-b border-[var(--color-gold)]/20">
             <div className="absolute inset-0">
               <Image
-                src="/BG web.jpeg"
+                src="/BG-quote.jpeg"
                 alt="Events Background"
                 fill
                 unoptimized
                 className="object-cover object-top opacity-30"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/15" />
 
             <Section id="events" bg="transparent" className="relative z-10 text-center">
-              <h2 className="font-serif-display text-gold mb-2 text-2xl uppercase tracking-[0.2em] sm:text-3xl">
+              <p
+                className="text-[var(--color-gold)] mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
+                style={{ fontFamily: "var(--font-trajanpro)" }}
+              >
                 Save The Date
-              </h2>
-              <p className="text-gold-light mb-8 text-sm uppercase tracking-[0.15em]">
-                Rincian Acara
               </p>
+              <h2
+                className="text-navy mb-4 text-2xl uppercase tracking-[0.3em] sm:text-3xl font-semibold"
+                style={{ fontFamily: "var(--font-trajanpro)" }}
+              >
+                Rincian Acara
+              </h2>
+
+              {/* Divider gold kecil */}
+              <div className="mx-auto mb-8 flex max-w-xs items-center justify-center gap-2">
+                <span className="h-px w-10 bg-gradient-to-r from-transparent to-[var(--color-gold)]" />
+                <svg
+                  width="8"
+                  height="8"
+                  viewBox="0 0 10 10"
+                  className="text-[var(--color-gold)]"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M5 0 L7 5 L5 10 L3 5 Z" />
+                </svg>
+                <span className="h-px w-10 bg-gradient-to-l from-transparent to-[var(--color-gold)]" />
+              </div>
+
               <Events
                 events={[
                   {
-                    title: "Akad Nikah",
                     date: "Rabu, 08 Juli 2026",
-                    time: "Pukul 08.00 WIB - Selesai",
-                    location: "Lokasi Akad",
-                    address:
-                      "Jalan Raya Ciilat - Gardu, Pasar Dongkal, No.19 (Rt.42/Rw.20) Sukadana (Depan Aneka Cellular), Kab. Ciamis, Sukadana, Jawa Barat, ID 46272",
-                    mapUrl: "https://maps.app.goo.gl/CtVMBudKyCT7h98B8?g_st=aw",
-                  },
-                  {
-                    title: "Resepsi",
-                    date: "Rabu, 08 Juli 2026",
-                    time: "Pukul 10.00 WIB - Selesai",
-                    location: "Lokasi Resepsi",
+                    sessions: [
+                      { title: "Akad Nikah", time: "Pukul 08.00 WIB - Selesai" },
+                      { title: "Resepsi", time: "Pukul 10.00 WIB - Selesai" },
+                    ],
+                    location: "Lokasi",
                     address:
                       "Jalan Raya Ciilat - Gardu, Pasar Dongkal, No.19 (Rt.42/Rw.20) Sukadana (Depan Aneka Cellular), Kab. Ciamis, Sukadana, Jawa Barat, ID 46272",
                     mapUrl: "https://maps.app.goo.gl/CtVMBudKyCT7h98B8?g_st=aw",
@@ -479,14 +491,14 @@ export default function Home() {
           <div className="relative overflow-hidden bg-cream border-b border-[var(--color-gold)]/20">
             <div className="absolute inset-0">
               <Image
-                src="/BG web.jpeg"
+                src="/BG-soft.jpeg"
                 alt="Love Story Background"
                 fill
                 unoptimized
                 className="object-cover object-top opacity-30"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/15" />
 
             <Section id="story" bg="transparent" className="relative z-10 text-center">
               <p
@@ -495,7 +507,10 @@ export default function Home() {
               >
                 Our Journey
               </p>
-              <h2 className="font-serif-display text-navy mb-8 text-2xl uppercase tracking-[0.2em] sm:text-3xl">
+              <h2
+                className="text-navy mb-4 text-2xl uppercase tracking-[0.3em] sm:text-3xl font-semibold"
+                style={{ fontFamily: "var(--font-trajanpro)" }}
+              >
                 Love Story
               </h2>
               <Story
@@ -529,14 +544,14 @@ export default function Home() {
           <div className="relative overflow-hidden bg-cream border-b border-[var(--color-gold)]/20">
             <div className="absolute inset-0">
               <Image
-                src="/BG web.jpeg"
+                src="/BG-photo.jpeg"
                 alt="Gallery Background"
                 fill
                 unoptimized
                 className="object-cover object-top opacity-30"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/15" />
 
             <Section id="gallery" bg="transparent" className="relative z-10 text-center">
               <p
@@ -545,7 +560,10 @@ export default function Home() {
               >
                 Our Moments
               </p>
-              <h2 className="font-serif-display text-navy mb-8 text-2xl uppercase tracking-[0.2em] sm:text-3xl">
+              <h2
+                className="text-navy mb-4 text-2xl uppercase tracking-[0.3em] sm:text-3xl font-semibold"
+                style={{ fontFamily: "var(--font-trajanpro)" }}
+              >
                 Our Gallery
               </h2>
               <Gallery
@@ -586,14 +604,14 @@ export default function Home() {
           <div className="relative overflow-hidden bg-cream border-b border-[var(--color-gold)]/20">
             <div className="absolute inset-0">
               <Image
-                src="/BG web.jpeg"
+                src="/BG-quote.jpeg"
                 alt="Wedding Gift Background"
                 fill
                 unoptimized
                 className="object-cover object-top opacity-30"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/15" />
 
             <Section id="gift" bg="transparent" className="relative z-10 text-center">
               <p
@@ -602,7 +620,10 @@ export default function Home() {
               >
                 Wedding Gift
               </p>
-              <h2 className="font-serif-display text-navy mb-2 text-2xl uppercase tracking-[0.2em] sm:text-3xl">
+              <h2
+                className="text-navy mb-4 text-2xl uppercase tracking-[0.3em] sm:text-3xl font-semibold"
+                style={{ fontFamily: "var(--font-trajanpro)" }}
+              >
                 Kirim Hadiah
               </h2>
               <Gift
@@ -622,14 +643,14 @@ export default function Home() {
           <div className="relative overflow-hidden bg-cream border-b border-[var(--color-gold)]/20">
             <div className="absolute inset-0">
               <Image
-                src="/BG web.jpeg"
+                src="/BG-soft.jpeg"
                 alt="Wishes Background"
                 fill
                 unoptimized
                 className="object-cover object-top opacity-30"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/15" />
 
             <Section id="wishes" bg="transparent" className="relative z-10 text-center">
               <p
@@ -638,7 +659,10 @@ export default function Home() {
               >
                 Berikan Ucapan
               </p>
-              <h2 className="font-serif-display text-navy mb-2 text-2xl uppercase tracking-[0.2em] sm:text-3xl">
+              <h2
+                className="text-navy mb-4 text-2xl uppercase tracking-[0.3em] sm:text-3xl font-semibold"
+                style={{ fontFamily: "var(--font-trajanpro)" }}
+              >
                 Wishes &amp; Doa
               </h2>
               <p className="text-navy-soft mx-auto mb-8 max-w-md text-sm">
