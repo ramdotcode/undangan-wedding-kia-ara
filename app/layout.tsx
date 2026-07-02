@@ -32,11 +32,11 @@ const astonScript = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "The Wedding Of Kia & Ara - Elevra",
+  title: "Kia & Ara Wedding Invitation - Elevra",
   description:
     "Rabu, 08 Juli 2026. Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara kami.",
   openGraph: {
-    title: "The Wedding Of Kia & Ara - Elevra",
+    title: "Kia & Ara Wedding Invitation - Elevra",
     description:
       "Rabu, 08 Juli 2026. Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara kami.",
     type: "article",

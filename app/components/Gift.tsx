@@ -84,8 +84,6 @@ export default function Gift({
   accountHolder2,
   bankLogoSrc2,
 }: GiftProps) {
-  const [showBanks, setShowBanks] = useState(false);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -100,36 +98,22 @@ export default function Gift({
         cashless.
       </p>
 
-      {!showBanks ? (
-        <button
-          type="button"
-          onClick={() => setShowBanks(true)}
-          className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-gold)] to-[var(--color-gold-dark)] px-8 py-3 text-sm font-medium uppercase tracking-[0.12em] text-white shadow transition-opacity hover:opacity-90"
-        >
-          Klik Disini
-        </button>
-      ) : (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="space-y-4"
-        >
+      <div className="space-y-4">
+        <BankCard
+          bankName={bankName}
+          accountNumber={accountNumber}
+          accountHolder={accountHolder}
+          bankLogoSrc={bankLogoSrc}
+        />
+        {bankName2 && accountNumber2 ? (
           <BankCard
-            bankName={bankName}
-            accountNumber={accountNumber}
-            accountHolder={accountHolder}
-            bankLogoSrc={bankLogoSrc}
+            bankName={bankName2}
+            accountNumber={accountNumber2}
+            accountHolder={accountHolder2 ?? accountHolder}
+            bankLogoSrc={bankLogoSrc2}
           />
-          {bankName2 && accountNumber2 ? (
-            <BankCard
-              bankName={bankName2}
-              accountNumber={accountNumber2}
-              accountHolder={accountHolder2 ?? accountHolder}
-              bankLogoSrc={bankLogoSrc2}
-            />
-          ) : null}
-        </motion.div>
-      )}
+        ) : null}
+      </div>
     </motion.div>
   );
 }
